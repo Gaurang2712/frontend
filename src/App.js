@@ -1,6 +1,6 @@
 import React from 'react';
-import InsertData from './components/InsertData';
-import DataTable from './components/DataTable';
+import InsertData from './components/AddUser';
+import DataTable from './components/UserList';
 
 function App() {
   return (
