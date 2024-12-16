@@ -1,13 +1,18 @@
-import React from 'react';
-import InsertData from './components/AddUser';
-import DataTable from './components/UserList';
+import React, { useState } from 'react';
+import AddUser from './components/AddUser';
+import UsersList from './components/UserList';
 
 function App() {
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+
+  const handleUserAdded = () => {
+    setRefreshTrigger(prev => prev + 1);
+  };
+
   return (
-    <div className="App">
-      <h1>React with Node.js API</h1>
-      <InsertData onInsert={() => window.location.reload()} />
-      <DataTable />
+    <div>
+      <AddUser onUserAdded={handleUserAdded} />
+      <UsersList key={refreshTrigger} />
     </div>
   );
 }

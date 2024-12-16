@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './mycss.css';
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);
@@ -11,13 +12,30 @@ const UsersList = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Users</h1>
-      <ul>
-        {users.map(user => (
-          <li key={user.id}>{user.id}-{user.name}{user.description}</li>
-        ))}
-      </ul>
+    <div className="user-list-container">
+      <table className="user-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map(user => (
+            <tr key={user._id}>
+              <td>
+              {user.id}
+              </td>
+              <td>
+              {user.name}
+              </td>
+           
+              <td> {user.description}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
